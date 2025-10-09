@@ -17,7 +17,7 @@ from mcp.server.fastmcp import FastMCP
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 # Get base URL from environment or use local static files
-BASE_URL = os.getenv("BASE_URL", "")
+BASE_URL = os.getenv("STATIC_BASE_URL", "/static")
 
 @dataclass(frozen=True)
 class TodosWidget:
@@ -39,8 +39,8 @@ widgets: List[TodosWidget] = [
         invoked="Served a fresh todos list",
         html=(
             f"<div id=\"todos-list-root\"></div>\n"
-            f"<link rel=\"stylesheet\" href=\"{BASE_URL}/assets/todos.css\">\n"
-            f"<script type=\"module\" src=\"{BASE_URL}/assets/todos.js\"></script>"
+            f"<link rel=\"stylesheet\" href=\"{BASE_URL}/todos.css\">\n"
+            f"<script type=\"module\" src=\"{BASE_URL}/todos.js\"></script>"
         ),
         response_text="Rendered a todos list!",
     ),
@@ -245,6 +245,13 @@ mcp._mcp_server.request_handlers[types.ReadResourceRequest] = _handle_read_resou
 
 
 app = mcp.streamable_http_app()
+
+# Add static file serving
+try:
+    from starlette.staticfiles import StaticFiles
+    app.mount("/static", StaticFiles(directory="static"), name="static")
+except Exception:
+    pass
 
 try:
     from starlette.middleware.cors import CORSMiddleware
