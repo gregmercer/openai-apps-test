@@ -38,9 +38,9 @@ widgets: List[TodosWidget] = [
         invoking="Todos list",
         invoked="Served a fresh todos list",
         html=(
-            f"<div id=\"todos-list-root\"></div>\n"
-            f"<link rel=\"stylesheet\" href=\"https://openai-apps-test.onrender.com/static/todos.css\">\n"
-            f"<script type=\"module\" src=\"https://openai-apps-test.onrender.com/static/todos.js\"></script>"
+            f"<div id=\"todo-root\"></div>\n"
+            f"<link rel=\"stylesheet\" href=\"https://openai-apps-test.onrender.com/static/todos-2d2b.css\">\n"
+            f"<script type=\"module\" src=\"https://openai-apps-test.onrender.com/static/todos-2d2b.js\"></script>"
         ),
         response_text="Rendered a todos list!",
     ),
