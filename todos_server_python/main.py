@@ -249,7 +249,13 @@ app = mcp.streamable_http_app()
 # Add static file serving
 try:
     from starlette.staticfiles import StaticFiles
-    app.mount("/static", StaticFiles(directory="static"), name="static")
+    import os
+
+    # Get the directory where this script is located
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    static_dir = os.path.join(script_dir, "static")
+
+    app.mount("/static", StaticFiles(directory=static_dir), name="static")
 except Exception:
     pass
 
