@@ -172,6 +172,10 @@ async def _handle_read_resource(req: types.ReadResourceRequest) -> types.ServerR
             )
         )
 
+    structured = {
+        "test_text": "howdy",
+    }
+
     contents = [
         types.TextResourceContents(
             uri=widget.template_uri,
@@ -181,7 +185,7 @@ async def _handle_read_resource(req: types.ReadResourceRequest) -> types.ServerR
         )
     ]
 
-    return types.ServerResult(types.ReadResourceResult(contents=contents))
+    return types.ServerResult(types.ReadResourceResult(contents=contents, structuredContent=structured))
 
 
 async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
