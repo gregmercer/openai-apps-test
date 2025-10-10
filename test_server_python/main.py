@@ -96,6 +96,7 @@ def _tool_meta(widget: TestWidget) -> Dict[str, Any]:
         "openai/toolInvocation/invoking": widget.invoking,
         "openai/toolInvocation/invoked": widget.invoked,
         "openai/widgetAccessible": True,
+        "openai/widgetPrefersBorder": True,
         "openai/resultCanProduceWidget": True,
         "annotations": {
           "destructiveHint": False,
