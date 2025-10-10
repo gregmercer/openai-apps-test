@@ -199,7 +199,6 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
         )
 
     arguments = req.params.arguments or {}
-    """
     try:
         payload = TestInput.model_validate(arguments)
     except ValidationError as exc:
@@ -216,7 +215,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
         )
 
     titleText = payload.title_text
-    """
+
     widget_resource = _embedded_widget_resource(widget)
     meta: Dict[str, Any] = {
         "openai.com/widget": widget_resource.model_dump(mode="json"),
@@ -227,7 +226,6 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
         "openai/resultCanProduceWidget": True,
     }
 
-    titleText = "Fred"
     structured = {
         "title_text": titleText
     }
