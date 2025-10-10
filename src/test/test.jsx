@@ -5,6 +5,10 @@ export function App() {
   const widgetProps = useWidgetProps() || {};
   const { title_text } = widgetProps;
 
+  const helloAgain = async () => {
+    await window.openai?.callTool("test-tool", { "title_text": "hi again. :)" });
+  };
+
   return (
     <div style={{
       position: 'absolute',
@@ -14,7 +18,22 @@ export function App() {
       fontSize: '18px',
       fontWeight: 'bold'
     }}>
-      {title_text || 'hi'}
+      <div>{title_text || 'hi'}</div>
+      <button
+        onClick={helloAgain}
+        style={{
+          marginTop: '10px',
+          padding: '8px 16px',
+          fontSize: '14px',
+          cursor: 'pointer',
+          backgroundColor: 'green',
+          color: 'white',
+          border: 'none',
+          borderRadius: '4px'
+        }}
+      >
+        Say Hello Again
+      </button>
     </div>
   );
 }

@@ -31,7 +31,7 @@ class TestWidget:
 
 widgets: List[TestWidget] = [
     TestWidget(
-        identifier="test-root",
+        identifier="test-tool",
         title="Show Test",
         template_uri="ui://widget/test.html",
         invoking="Displaying test",
