@@ -230,6 +230,11 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
         "openai/resultCanProduceWidget": True,
     }
 
+    structured = {
+        "pizzaTopping": topping,
+        "test_text": "Fred"
+    }
+
     return types.ServerResult(
         types.CallToolResult(
             content=[
@@ -238,7 +243,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
                     text=widget.response_text,
                 )
             ],
-            structuredContent={"pizzaTopping": topping},
+            structuredContent=structured,
             _meta=meta,
         )
     )
