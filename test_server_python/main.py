@@ -66,7 +66,7 @@ class TestInput(BaseModel):
 
 
 mcp = FastMCP(
-    name="test-python",
+    name="test-server-python",
     sse_path="/mcp",
     message_path="/mcp/messages",
     stateless_http=True,
