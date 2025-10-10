@@ -204,6 +204,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
         )
 
     arguments = req.params.arguments or {}
+    """
     try:
         payload = TodosInput.model_validate(arguments)
     except ValidationError as exc:
@@ -220,6 +221,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
         )
 
     topping = payload.pizza_topping
+    """
     widget_resource = _embedded_widget_resource(widget)
     meta: Dict[str, Any] = {
         "openai.com/widget": widget_resource.model_dump(mode="json"),
@@ -231,7 +233,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
     }
 
     structured = {
-        "pizzaTopping": topping,
+        "pizzaTopping": "meat",
         "test_text": "Fred"
     }
 
