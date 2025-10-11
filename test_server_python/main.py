@@ -216,6 +216,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
         )
 
     titleText = payload.title_text
+    print(f"titleText = {titleText}")
 
     widget_resource = _embedded_widget_resource(widget)
     meta: Dict[str, Any] = {
@@ -230,6 +231,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
     structured = {
         "title_text": titleText
     }
+    print("structured = {structured}")
 
     return types.ServerResult(
         types.CallToolResult(
