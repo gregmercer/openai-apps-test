@@ -29,7 +29,7 @@ export function App() {
   };
 
   const gotoDoc = async () => {
-    window.openai.openExternal({ "payload": "https://developers.openai.com/apps-sdk" });
+    await window.openai.openExternal("https://developers.openai.com/apps-sdk");
   };
 
   return (
