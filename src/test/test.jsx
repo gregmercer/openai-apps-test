@@ -24,12 +24,12 @@ export function App() {
   const maxHeight = "100vh";
 
   const helloAgain = async () => {
-    //await window.openai.sendFollowUpMessage({ "prompt": "can you show the test app again with the title 'hello again.'" });
-    await window.openai.callTool("test-tool", { "title_text": "hi again. :)" });
+    await window.openai.sendFollowUpMessage({ "prompt": "can you show the test app again with the title 'hello again.'" });
+    //await window.openai.callTool("test-tool", { "title_text": "hi again. :)" });
   };
 
   const gotoDoc = async () => {
-    await window.openai.openExternal("https://developers.openai.com/apps-sdk");
+    window.openai.openExternal({ "payload": "https://developers.openai.com/apps-sdk" });
   };
 
   return (
