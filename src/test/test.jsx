@@ -25,7 +25,8 @@ export function App() {
 
   const helloAgain = async () => {
     //await window.openai.sendFollowUpMessage({ "prompt": "can you show the test app again with the title 'hello again.'" });
-    await window.openai.callTool("test-tool", { "title_text": "hi again. :)" });
+    const reply = await window.openai.callTool("test-tool", { "title_text": "hi again. :)" });
+    console.log("Tool response:", reply);
   };
 
   const gotoDoc = async () => {
