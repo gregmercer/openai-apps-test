@@ -19,12 +19,12 @@ const ExpandIcon = () => {
 
 export function App() {
   const widgetProps = useWidgetProps() || {};
-  const { title_text } = widgetProps;
+  const { title_text = 'hi' } = widgetProps;
   const displayMode = useDisplayMode();
   const maxHeight = "100vh";
 
   // Add state to track the current title
-  const [titleText, setTitleText] = useState(title_text || 'hi');
+  const [titleText, setTitleText] = useState(title_text);
 
   const helloAgain = async () => {
     //await window.openai.sendFollowUpMessage({ "prompt": "can you show the test app again with the title 'hello again.'" });
