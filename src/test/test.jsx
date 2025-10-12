@@ -1,7 +1,7 @@
 import React from "react";
 import { useWidgetProps } from "../use-widget-props";
+import { useWidgetState } from "../use-widget-state";
 import { useDisplayMode } from "../use-display-mode";
-import { useState } from 'react';
 
 const ExpandIcon = () => {
   return (
@@ -24,7 +24,11 @@ export function App() {
   const maxHeight = "100vh";
 
   // Add state to track the current title
-  const [titleText, setTitleText] = useState(title_text);
+  const [titleText, setTitleText] = useWidgetState(title_text);
+
+  useEffect(() => {
+    setTitleText(title_text);
+  }, [title_text, setTitleText]);
 
   const helloAgain = async () => {
     //await window.openai.sendFollowUpMessage({ "prompt": "can you show the test app again with the title 'hello again.'" });
