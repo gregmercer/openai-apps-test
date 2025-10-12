@@ -231,7 +231,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
     structured = {
         "title_text": titleText
     }
-    print("structured = {structured}")
+    print(f"structured = {structured}")
 
     return types.ServerResult(
         types.CallToolResult(
