@@ -19,7 +19,7 @@ const ExpandIcon = () => {
 
 export function App() {
   const widgetProps = useWidgetProps() || {};
-  const { title_text: initialTitleText } = widgetProps;
+  const { title_text: initialTitleText } = widgetProps('title_text') || '';
   const displayMode = useDisplayMode();
   const maxHeight = "100vh";
 
