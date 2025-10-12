@@ -24,8 +24,8 @@ export function App() {
   const displayMode = useDisplayMode();
   const maxHeight = "100vh";
 
-  // Add state to track the current title
   const [titleText, setTitleText] = useWidgetState(title_text);
+  const [isLoading, setIsLoading] = useWidgetState(false);
 
   useEffect(() => {
     setTitleText(title_text);
@@ -33,9 +33,16 @@ export function App() {
 
   const helloAgain = async () => {
     //await window.openai.sendFollowUpMessage({ "prompt": "can you show the test app again with the title 'hello again.'" });
-    const reply = await window.openai.callTool("test-tool", { "title_text": "hi again. :)" });
-    if (reply?.structuredContent?.title_text) {
-      setTitleText(reply.structuredContent.title_text);
+    setIsLoading(true);
+    try {
+      const reply = await window.openai.callTool("test-tool", {
+        "title_text": "hi again. :)"
+      });
+      if (reply?.structuredContent?.title_text) {
+        setTitleText(reply.structuredContent.title_text);
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -75,6 +82,7 @@ export function App() {
         <div>{titleText || 'hi'}</div>
         <button
           onClick={helloAgain}
+          disabled={isLoading}
           style={{
             marginTop: '10px',
             padding: '8px 16px',
@@ -83,10 +91,11 @@ export function App() {
             backgroundColor: 'green',
             color: 'white',
             border: 'none',
-            borderRadius: '4px'
+            borderRadius: '4px',
+            cursor: isLoading ? 'wait' : 'pointer'
           }}
         >
-          Say Hello Again
+          {isLoading ? 'Loading...' : 'Say hello again'}
         </button>
         <button
           onClick={gotoDoc}
