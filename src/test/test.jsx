@@ -2,6 +2,7 @@ import React from "react";
 import { useWidgetProps } from "../use-widget-props";
 import { useWidgetState } from "../use-widget-state";
 import { useDisplayMode } from "../use-display-mode";
+import { useEffect } from "react";
 
 const ExpandIcon = () => {
   return (
