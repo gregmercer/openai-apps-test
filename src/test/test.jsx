@@ -98,7 +98,7 @@ export function App() {
         </button>
         <button
           onClick={() => {
-            window.openai.openExternal({ payload: "https://developers.openai.com/apps-sdk" });
+            window.openai.openExternal({ href: "https://developers.openai.com/apps-sdk" });
           }}
           style={{
             marginTop: '10px',
