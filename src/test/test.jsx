@@ -97,7 +97,9 @@ export function App() {
           {isLoading ? 'Loading...' : 'Say hello again'}
         </button>
         <button
-          onClick={gotoDoc}
+          onClick={() => {
+            window.openai.openExternal({ payload: "https://developers.openai.com/apps-sdk" });
+          }}
           style={{
             marginTop: '10px',
             marginLeft: '10px',
