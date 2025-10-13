@@ -97,7 +97,7 @@ export function App() {
           {isLoading ? 'Loading...' : 'Say hello again'}
         </button>
         <button
-          onClick={() => {
+          onPointerDown={() => {
             window.openai.openExternal({ href: "https://developers.openai.com/apps-sdk" });
           }}
           style={{
