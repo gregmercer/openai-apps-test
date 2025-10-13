@@ -50,6 +50,12 @@ export function App() {
     window.openai.openExternal({ "payload": "https://developers.openai.com/apps-sdk" });
   };
 
+  const btn = document.querySelector('#sdk-doc-btn');
+  btn.addEventListener('pointerdown', (e) => {
+    console.log('isActive?', navigator.userActivation?.isActive);
+    window.openai?.openExternal?.({ href: 'https://developers.openai.com/apps-sdk' });
+  }, { capture: true, passive: false });
+
   return (
     <div
       className={`antialiased w-full relative bg-blue-300 overflow-hidden ${displayMode !== "fullscreen" ? "aspect-[640/480] sm:aspect-[640/400]" : ""
@@ -97,6 +103,7 @@ export function App() {
           {isLoading ? 'Loading...' : 'Say hello again'}
         </button>
         <button
+          id="sdk-doc-btn"
           onPointerDown={() => {
             window.openai.openExternal({ href: "https://developers.openai.com/apps-sdk" });
           }}
