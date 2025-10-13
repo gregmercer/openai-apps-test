@@ -46,6 +46,10 @@ export function App() {
     }
   };
 
+  const gotoDoc = () => {
+    window.openai.openExternal({ href: "https://developers.openai.com/apps-sdk" });
+  };
+
   return (
     <div
       className={`antialiased w-full relative bg-blue-300 overflow-hidden ${displayMode !== "fullscreen" ? "aspect-[640/480] sm:aspect-[640/400]" : ""
@@ -93,9 +97,7 @@ export function App() {
           {isLoading ? 'Loading...' : 'Say hello again'}
         </button>
         <button
-          onClick={() => {
-            window.openai.openExternal({ href: "https://developers.openai.com/apps-sdk" });
-          }}
+          onClick={gotoDoc}
           style={{
             marginTop: '10px',
             marginLeft: '10px',
