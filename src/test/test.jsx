@@ -46,7 +46,7 @@ export function App() {
     }
   };
 
-  const gotoDoc = async () => {
+  const gotoDoc = () => {
     window.openai.openExternal({ "payload": "https://developers.openai.com/apps-sdk" });
   };
 
@@ -87,7 +87,6 @@ export function App() {
             marginTop: '10px',
             padding: '8px 16px',
             fontSize: '14px',
-            cursor: 'pointer',
             backgroundColor: 'green',
             color: 'white',
             border: 'none',
